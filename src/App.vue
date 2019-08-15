@@ -31,7 +31,10 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>{{ $store.state.app.title }}</v-toolbar-title>
+      <v-toolbar-title
+      @click.stop="$router.push('/')"
+      class="logo"
+      >{{ $store.state.app.title }}</v-toolbar-title>
     </v-app-bar>
     <v-content>
       <transition name="fade">
@@ -48,12 +51,20 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      source: String,
-    },
-    data: () => ({
-      drawer: null,
-    }),
-  }
+export default {
+  props: {
+    source: String
+  },
+  data: () => ({
+    drawer: null
+  })
+}
 </script>
+<style media="screen" lang="scss">
+  .logo{
+    cursor: pointer;
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+</style>
