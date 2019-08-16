@@ -6,6 +6,7 @@
       src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
     >
       <v-list dense>
+        <menuGuest v-if="!$store.state.userInfo.state"/>
         <v-list-item @click.stop="$router.push('home')">
           <v-list-item-action>
             <v-icon>home</v-icon>
@@ -14,6 +15,7 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
         <!-- <v-list-item @click="">
           <v-list-item-action>
             <v-icon>contact_mail</v-icon>
@@ -51,7 +53,39 @@
 </template>
 
 <script>
+import menuGuest from './components/menu/Guest'
 export default {
+  components: {
+    menuGuest
+  },
+   created: () => {
+  //   let promesa = new Promise((res, rej) => {
+  //     if (true) {
+  //       res('La operación fue exitosa!')
+  //     }
+  //     rej('Algo falló...')
+  //   })
+  //
+  //   promesa.then( res => {
+  //     console.log(res);
+  //   }).catch( e => {
+  //     console.error(e)
+  //   })
+  //   Promise.all([promesa])
+  //   .then( res => {
+  //     console.log(res);
+  //   })
+  //   .catch( e => {
+  //     console.log(e);
+  //   })
+  //   Promise.race([promesa])
+  //   .then( res => {
+  //     console.log(res);
+  //   })
+  //   .catch( e => {
+  //     console.log(e);
+  //   })
+  },
   props: {
     source: String
   },
