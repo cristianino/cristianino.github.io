@@ -3,7 +3,7 @@
     <v-navigation-drawer
       v-model="drawer"
       app
-      src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
+      src="./assets/logo.png"
     >
       <v-list dense>
         <menuGuest v-if="!$store.state.userInfo.state"/>
@@ -29,14 +29,22 @@
 
     <v-app-bar
       app
-      color="indigo"
+      color="amber darken-3"
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title
       @click.stop="$router.push('/')"
       class="logo"
-      >{{ $store.state.app.title }}</v-toolbar-title>
+      >
+      <v-img
+        src="./assets/logo.png"
+        lazy-src="./assets/logo.png"
+        aspect-ratio="1"
+        class="grey lighten-2"
+        width="35"
+      ></v-img>
+      </v-toolbar-title>
     </v-app-bar>
     <v-content>
       <transition name="fade">
@@ -44,7 +52,7 @@
       </transition>
     </v-content>
     <v-footer
-      color="indigo"
+      color="amber darken-2"
       app
     >
       <span class="white--text">&copy; Tecnovulario 2019</span>
