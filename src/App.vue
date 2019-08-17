@@ -37,13 +37,14 @@
       @click.stop="$router.push('/')"
       class="logo"
       >
-      <v-img
-        src="./assets/logo.png"
-        lazy-src="./assets/logo.png"
-        aspect-ratio="1"
-        class="grey lighten-2"
-        width="35"
-      ></v-img>
+      <v-avatar>
+        <v-img
+          src="./assets/logo.png"
+          lazy-src="./assets/logo.png"
+          class="grey lighten-2"
+          width="35"
+        ></v-img>
+      </v-avatar>
       </v-toolbar-title>
     </v-app-bar>
     <v-content>
@@ -51,11 +52,57 @@
         <router-view></router-view>
       </transition>
     </v-content>
+    <v-bottom-navigation
+      :value="activeBtn"
+      app
+      color="amber darken-2"
+      v-if="$store.state.userInfo.state"
+    >
+      <v-btn>
+        <span>Recents</span>
+        <v-icon>history</v-icon>
+      </v-btn>
+
+      <v-btn>
+        <span>Favorites</span>
+        <v-icon>favorite</v-icon>
+      </v-btn>
+
+      <v-btn>
+        <span>Nearby</span>
+        <v-icon>place</v-icon>
+      </v-btn>
+    </v-bottom-navigation>
     <v-footer
       color="amber darken-2"
-      app
+      padless
     >
-      <span class="white--text">&copy; Tecnovulario 2019</span>
+    <v-card
+      flat
+      tile
+      class="amber darken-2 white--text text-center"
+    >
+      <v-card-text>
+        <v-btn
+          v-for="icon in footerIcons"
+          :key="icon"
+          class="mx-4 white--text"
+          icon
+        >
+          <v-icon size="24px">{{ icon }}</v-icon>
+        </v-btn>
+      </v-card-text>
+
+      <v-card-text class="white--text pt-0">
+        Este sitio es para expocición del trabajo de Cristian Niño y uso de algunos de sus desarrollos
+      </v-card-text>
+
+      <v-divider></v-divider>
+
+      <v-card-text class="white--text">
+        &copy; {{ new Date().getFullYear() }} — <strong>Tecnovulario</strong>
+      </v-card-text>
+    </v-card>
     </v-footer>
   </v-app>
 </template>
@@ -98,7 +145,15 @@ export default {
     source: String
   },
   data: () => ({
-    drawer: null
+    drawer: null,
+    footerIcons: [
+        'android',
+        'thumb_up',
+        'favorite',
+        'touch_app',
+        'security',
+    ],
+    activeBtn: 1
   })
 }
 </script>
