@@ -30,7 +30,6 @@ firebase.auth().onAuthStateChanged(function (user) {
     store.state.userInfo.data = null
     store.state.userInfo.state = false
   }
-  console.log(store.state.userInfo)
 })
 
 

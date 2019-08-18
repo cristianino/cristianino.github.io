@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import AuthRegister from './views/auth/Register'
+import AuthLogin from './views/auth/Login'
 
 Vue.use(Router)
 
@@ -20,6 +21,11 @@ let routes = [
     path: '/register',
     name: 'register',
     component: AuthRegister
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: AuthLogin
   },
   {
     path: '/about',

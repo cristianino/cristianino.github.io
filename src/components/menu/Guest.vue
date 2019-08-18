@@ -1,10 +1,10 @@
 <template lang="html">
-  <span><v-list-item @click.stop="$router.push('home')">
+  <span><v-list-item @click.stop="$router.push('login')">
     <v-list-item-action>
       <v-icon>input</v-icon>
     </v-list-item-action>
     <v-list-item-content>
-      <v-list-item-title>Login</v-list-item-title>
+      <v-list-item-title>Ingresar</v-list-item-title>
     </v-list-item-content>
   </v-list-item>
   <v-list-item @click.stop="$router.push('register')">

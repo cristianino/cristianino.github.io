@@ -4,7 +4,7 @@
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
             <v-card class="elevation-12">
-              <v-toolbar dark color="primary">
+              <v-toolbar dark color="amber darken-3">
                 <v-toolbar-title>Registro a {{$store.state.app.title}}</v-toolbar-title>
                 <v-spacer></v-spacer>
               </v-toolbar>
@@ -27,7 +27,11 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" @click.stop="registro">Guardar</v-btn>
+                <v-btn
+                color="amber darken-3"
+                @click.stop="registro"
+                class="white--text"
+                >Guardar</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -46,6 +50,13 @@
 // })
 import firebase from 'firebase'
 export default {
+  mounted () {
+    setTimeout(() =>{
+      if (this.$store.state.userInfo.state == true) {
+        this.$router.push('/');
+      }
+    }, 3000);
+  },
   data: () => ({
     name: {
       data: '',
@@ -84,7 +95,7 @@ export default {
           console.log(error);
           // ...
         })
-        console.log('enviando');
+        this.$router.push('/');
     },
     passwordMatchError () {
     return (this.password.data === this.verifyPassword.data) ? '' : 'Las contraseñas no coinciden'

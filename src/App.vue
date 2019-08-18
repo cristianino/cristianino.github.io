@@ -6,7 +6,6 @@
       src="./assets/logo.png"
     >
       <v-list dense>
-        <menuGuest v-if="!$store.state.userInfo.state"/>
         <v-list-item @click.stop="$router.push('home')">
           <v-list-item-action>
             <v-icon>home</v-icon>
@@ -15,6 +14,8 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <menu-guest v-if="!$store.state.userInfo.state"/>
+        <menu-auth v-else />
 
         <!-- <v-list-item @click="">
           <v-list-item-action>
@@ -40,7 +41,7 @@
       <v-avatar>
         <v-img
           src="./assets/logo.png"
-          lazy-src="./assets/logo.png"
+          lazy-src="../public/img/icons/apple-touch-icon-60x60.png"
           class="grey lighten-2"
           width="35"
         ></v-img>
@@ -109,9 +110,11 @@
 
 <script>
 import menuGuest from './components/menu/Guest'
+import menuAuth from './components/menu/Auth'
 export default {
   components: {
-    menuGuest
+    menuGuest,
+    menuAuth
   },
    created: () => {
   //   let promesa = new Promise((res, rej) => {
