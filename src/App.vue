@@ -77,33 +77,36 @@
     <v-footer
       color="amber darken-2"
       padless
+      justify="center"
     >
-    <v-card
-      flat
-      tile
-      class="amber darken-2 white--text text-center"
-    >
-      <v-card-text>
-        <v-btn
-          v-for="icon in footerIcons"
-          :key="icon"
-          class="mx-4 white--text"
-          icon
-        >
-          <v-icon size="24px">{{ icon }}</v-icon>
-        </v-btn>
-      </v-card-text>
+    <v-spacer></v-spacer>
+      <v-card
+        flat
+        tile
+        class="amber darken-2 white--text text-center"
+      >
+        <v-card-text>
+          <v-btn
+            v-for="icon in footerIcons"
+            :key="icon"
+            class="mx-4 white--text"
+            icon
+          >
+            <v-icon size="24px">{{ icon }}</v-icon>
+          </v-btn>
+        </v-card-text>
 
-      <v-card-text class="white--text pt-0">
-        Este sitio es para expocición del trabajo de Cristian Niño y uso de algunos de sus desarrollos
-      </v-card-text>
+        <v-card-text class="white--text pt-0">
+          Este sitio es para expocición del trabajo de Cristian Niño y uso de algunos de sus desarrollos
+        </v-card-text>
 
-      <v-divider></v-divider>
+        <v-divider></v-divider>
 
-      <v-card-text class="white--text">
-        &copy; {{ new Date().getFullYear() }} — <strong>Tecnovulario</strong>
-      </v-card-text>
-    </v-card>
+        <v-card-text class="white--text">
+          &copy; {{ new Date().getFullYear() }} — <strong>Tecnovulario</strong>
+        </v-card-text>
+      </v-card>
+      <v-spacer></v-spacer>
     </v-footer>
   </v-app>
 </template>
