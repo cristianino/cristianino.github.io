@@ -5,7 +5,7 @@
         justify="center"
         >
           <v-col
-          cols="8"
+          xs="auto"
           >
             <v-card class="elevation-12">
               <v-toolbar dark color="amber darken-3">

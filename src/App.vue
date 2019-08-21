@@ -97,7 +97,7 @@
         </v-card-text>
 
         <v-card-text class="white--text pt-0">
-          Este sitio es para expocición del trabajo de Cristian Niño y uso de algunos de sus desarrollos
+          Este sitio es para exposición del trabajo de Cristian Niño y uso de algunos de sus desarrollos
         </v-card-text>
 
         <v-divider></v-divider>
