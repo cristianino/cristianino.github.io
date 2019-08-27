@@ -9,7 +9,9 @@
         v-for="project in projects"
         :key="project.id"
         class="d-flex child-flex project-col"
-        cols="4"
+        sm="12"
+        md="3"
+        lg="4"
       >
         <v-card flat tile class="d-flex">
           <v-img
