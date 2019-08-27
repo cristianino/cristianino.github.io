@@ -155,8 +155,8 @@ export default {
     footerIcons: [
         'android',
         'thumb_up',
-        'favorite',
         'touch_app',
+        'favorite',
         'security',
     ],
     activeBtn: 1
