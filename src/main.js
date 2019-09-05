@@ -32,7 +32,6 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 })
 
-
 new Vue({
   router,
   store,

@@ -13,7 +13,12 @@
         md="3"
         lg="4"
       >
-        <v-card flat tile class="d-flex">
+        <v-card
+        flat
+        tile
+        class="d-flex"
+        @click="showProject(project)"
+        >
           <v-img
             :src="project.imagePrimary"
             class="amber darken-2 project-img"
@@ -43,6 +48,48 @@
         </v-card>
       </v-col>
     </v-row>
+    <div
+    class="show-project-info-card"
+    v-if="projectShow.show"
+    transition="scroll-y-transition"
+    >
+      <v-btn
+      icon
+      class="close-buttom"
+      @click="projectShow.show = false"
+      >
+        <v-icon class="amber--text darken-2">close</v-icon>
+      </v-btn>
+      <v-card
+      class="mx-auto"
+      width="100%"
+      >
+        <v-card-title>{{projectShow.data.name}}</v-card-title>
+        <v-card-text>{{projectShow.data.description}}</v-card-text>
+        <v-carousel>
+          <v-carousel-item
+            v-for="(image,i) in projectShow.data.images"
+            :key="i"
+            :src="image.url"
+            reverse-transition="fade-transition"
+            transition="fade-transition"
+          ></v-carousel-item>
+        </v-carousel>
+        <v-list>
+          <v-subheader>Tecnologias:</v-subheader>
+          <v-list-item-group color="primary">
+            <v-list-item
+              v-for="(item, i) in projectShow.data.tecnologies"
+              :key="i"
+            >
+              <v-list-item-content>
+                <v-list-item-title>{{item}}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-card>
+    </div>
   </div>
 </template>
 
@@ -61,7 +108,7 @@ export default {
       {
         id: 1,
         name: 'Pagos por Qr',
-        description: 'Este programa permite hacer transferecias bajo un token propio, sin blockchain, genera una wallet aleatoria además de permitir alojar una wallet de bitcoin, una de bitcoin cash, y una de ethereum. Las transacciónes son atomicas. Tiene un sistema de roles: Admun, gestor y usuario.',
+        description: 'Este programa permite hacer transferecias bajo un token propio, sin blockchain, genera una wallet aleatoria además de permitir alojar una wallet de bitcoin, una de bitcoin cash, y una de ethereum. Las transacciónes son atomicas. Tiene un sistema de roles: Admin, gestor y usuario.',
         personal: {
           state: false,
           description: 'Este programa se desarrolló para una empresa de marketing, cuyo nombre fue "E Pay".'
@@ -77,27 +124,22 @@ export default {
         imagePrimary: '/img/proyectos/pagos/recibir-transferencia.png',
         images: [
           {
-            url: 'recibir-transferencia.png',
+            url: '/img/proyectos/pagos/recibir-transferencia.png',
             name: 'recibir transferencia',
             primary: true
           },
           {
-            url: 'recibir-con-camara.png',
+            url: '/img/proyectos/pagos/recibir-con-camara.png',
             name: '',
             primary: false
           },
           {
-            url: 'recibir-con-camara',
+            url: '/img/proyectos/pagos/recibir-transferecnai.png',
             name: '',
             primary: false
           },
           {
-            url: 'recibir-transferecnai.png',
-            name: '',
-            primary: false
-          },
-          {
-            url: 'Registro.png',
+            url: '/img/proyectos/pagos/Registro.png',
             name: '',
             primary: false
           }
@@ -105,7 +147,7 @@ export default {
       },
       {
         id: 2,
-        name: 'Pagos por Qr',
+        name: 'Pagos por Qr2',
         description: 'Este programa permite hacer transferecias bajo un token propio, sin blockchain, genera una wallet aleatoria además de permitir alojar una wallet de bitcoin, una de bitcoin cash, y una de ethereum. Las transacciónes son atomicas. Tiene un sistema de roles: Admun, gestor y usuario.',
         personal: {
           state: false,
@@ -122,34 +164,40 @@ export default {
         imagePrimary: '/img/proyectos/pagos/recibir-transferencia.png',
         images: [
           {
-            url: 'recibir-transferencia.png',
+            url: '/img/proyectos/pagos/recibir-transferencia.png',
             name: 'recibir transferencia',
             primary: true
           },
           {
-            url: 'recibir-con-camara.png',
+            url: '/img/proyectos/pagos/recibir-con-camara.png',
             name: '',
             primary: false
           },
           {
-            url: 'recibir-con-camara',
+            url: '/img/proyectos/pagos/recibir-transferecnai.png',
             name: '',
             primary: false
           },
           {
-            url: 'recibir-transferecnai.png',
-            name: '',
-            primary: false
-          },
-          {
-            url: 'Registro.png',
+            url: '/img/proyectos/pagos/Registro.png',
             name: '',
             primary: false
           }
         ]
       }
-    ]
-  })
+    ],
+    projectShow: {
+      show: false,
+      data: null
+    }
+  }),
+  methods: {
+    showProject: function (data) {
+      this.projectShow.show = true
+      this.projectShow.data = data
+      console.log(this.projectShow.data)
+    }
+  }
 }
 </script>
 
@@ -167,7 +215,7 @@ export default {
       width: 100%;
     }
     .data-project-description{
-      display:none;
+      visibility:hidden;
     }
     &:hover{
       cursor: pointer;
@@ -181,9 +229,27 @@ export default {
         background-color: rgb(243,148,54);
       }
       .data-project-description{
-        display: inherit;
+        visibility: visible;
       }
     }
+  }
+}
+.show-project-info-card{
+  z-index: 1000;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  top: 0;
+  left: 0;
+  z-index: 1100;
+  padding: 2% 5%;
+  overflow: auto;
+
+  .close-buttom{
+    top: 0;
+    right: 0;
+    position: absolute;
   }
 }
 </style>
