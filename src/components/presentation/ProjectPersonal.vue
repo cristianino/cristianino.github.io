@@ -66,7 +66,9 @@
       >
         <v-card-title>{{projectShow.data.name}}</v-card-title>
         <v-card-text>{{projectShow.data.description}}</v-card-text>
-        <v-carousel>
+        <v-carousel
+        :cycle="projectShow.carouselProp.cycle"
+        >
           <v-carousel-item
             v-for="(image,i) in projectShow.data.images"
             :key="i"
@@ -188,7 +190,10 @@ export default {
     ],
     projectShow: {
       show: false,
-      data: null
+      data: null,
+      carouselProp: {
+        cycle : true
+      }
     }
   }),
   methods: {
@@ -249,7 +254,11 @@ export default {
   .close-buttom{
     top: 0;
     right: 0;
+    margin-top: 0.3em;
+    margin-right: 0.3em;
     position: absolute;
+    z-index: 1001;
+    background: rgba(0,0,0,0.7);
   }
 }
 </style>
