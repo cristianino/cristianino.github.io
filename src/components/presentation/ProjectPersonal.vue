@@ -192,7 +192,7 @@ export default {
       show: false,
       data: null,
       carouselProp: {
-        cycle : true
+        cycle: true
       }
     }
   }),
