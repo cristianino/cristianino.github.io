@@ -89,7 +89,7 @@
           <v-btn
             v-for="icon in footerIcons"
             :key="icon"
-            class="mx-4 white--text"
+            class="mx-4 white--text icon-footer"
             icon
           >
             <v-icon size="24px">{{ icon }}</v-icon>
@@ -119,7 +119,7 @@ export default {
     menuGuest,
     menuAuth
   },
-   created: () => {
+  created: () => {
   //   let promesa = new Promise((res, rej) => {
   //     if (true) {
   //       res('La operación fue exitosa!')
@@ -153,11 +153,11 @@ export default {
   data: () => ({
     drawer: null,
     footerIcons: [
-        'android',
-        'thumb_up',
-        'touch_app',
-        'favorite',
-        'security',
+      'android',
+      'thumb_up',
+      'touch_app',
+      'favorite',
+      'security'
     ],
     activeBtn: 1
   })
@@ -168,6 +168,12 @@ export default {
     cursor: pointer;
     &:hover{
       opacity: 0.8;
+    }
+  }
+  .icon-footer{
+    transition: all 1s ease;
+    &:hover{
+      transform: rotateY(1turn);
     }
   }
 </style>

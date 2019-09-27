@@ -12,7 +12,10 @@ export default new Vuex.Store({
       state: false,
       data: null
     },
-    firebaseConfig: null
+    firebaseConfig: null,
+    firebase: {
+      database: null
+    }
   },
   mutations: {
 

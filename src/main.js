@@ -25,13 +25,20 @@ firebase.auth().onAuthStateChanged(function (user) {
     // User is signed in.
     store.state.userInfo.data = user
     store.state.userInfo.state = true
-    // ..
+    var userId = firebase.auth().currentUser.uid
+    return firebase.database().ref('/users/' + userId).once('value').then(function (snapshot) {
+      var username = (snapshot.val() && snapshot.val().username) || 'Anonymous'
+      console.log(username)
+    })
   } else {
     store.state.userInfo.data = null
     store.state.userInfo.state = false
   }
 })
 
+// Get a reference to the database service
+store.state.firebase.database = firebase.database()
+console.log(store.state.firebase.database)
 new Vue({
   router,
   store,

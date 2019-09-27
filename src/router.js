@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import AuthRegister from './views/auth/Register'
 import AuthLogin from './views/auth/Login'
+import Pasamanos from './views/pasamanos/Index'
 
 Vue.use(Router)
 
@@ -26,6 +27,11 @@ let routes = [
     path: '/login',
     name: 'login',
     component: AuthLogin
+  },
+  {
+    path: '/pasamanos',
+    name: 'pasamanos',
+    component: Pasamanos
   },
   {
     path: '/about',
